@@ -1,0 +1,25 @@
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.micro
+    AllowedValues: [t2.micro, t2.small, t2.medium, t3.micro, t3.small, t3.medium]
+    Description: Enter the instance type for the EC2 instance.
+
+  KeyNameParameter:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair to enable SSH access to instances.
+
+  SecurityGroupParameter:
+    Type: AWS::EC2::SecurityGroup::Id
+    Description: Enter the ID of an existing security group for the EC2 instance.
+
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceTypeParameter
+      KeyName: !Ref KeyNameParameter
+      SecurityGroupIds:
+        - !Ref SecurityGroupParameter
+      ImageId: ami-08fe36427228eddc4  # Specify your AMI ID
+

@@ -1,0 +1,33 @@
+Parameters:
+  CreateEC2Instance:
+    Type: String
+    Default: 'true'
+    AllowedValues: ['true', 'false']
+    Description: Set to 'true' to create EC2 instance, 'false' to skip EC2 creation.
+
+  KeyNameParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /test/Ec2KeyPairName
+    Description: SSM Parameter Path for the EC2 KeyPair name.
+
+  SecurityGroupParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /test/Ec2SecurityGroupId
+    Description: SSM Parameter Path for the EC2 Security Group ID.
+
+
+Conditions:
+  ShouldCreateEC2Instance: !Equals [!Ref CreateEC2Instance, 'true']
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Condition: ShouldCreateEC2Instance
+    Properties:
+        ImageId: ami-08fe36427228eddc4
+        InstanceType: t2.micro
+        KeyName: !Ref KeyNameParameter
+        SecurityGroupIds:
+          - !Ref SecurityGroupParameter
+
+

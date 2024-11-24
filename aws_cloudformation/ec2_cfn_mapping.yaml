@@ -1,0 +1,36 @@
+Mappings:
+  RegionMap:
+    ap-south-1:
+      AMI: ami-0f2e255ec956ade7f
+      InstanceType: t2.micro
+    us-east-1:
+      AMI: ami-08fe36427228eddc4
+      InstanceType: t2.small
+
+Parameters:
+  SelectedRegion:
+    Type: String
+    Default: ap-south-1
+    AllowedValues: [us-east-1, ap-south-1]
+    Description: Choose the AWS region for the EC2 instance.
+  
+  KeyNameParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /test/Ec2KeyPairName
+    Description: SSM Parameter Path for the EC2 KeyPair name.
+
+  SecurityGroupParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /test/Ec2SecurityGroupId
+    Description: SSM Parameter Path for the EC2 Security Group ID.
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      #Region: !Ref AWS::Region
+      ImageId: !FindInMap [RegionMap, !Ref SelectedRegion, AMI]
+      InstanceType: !FindInMap [RegionMap, !Ref SelectedRegion, InstanceType]
+      KeyName: !Ref KeyNameParameter
+      SecurityGroupIds:
+        - !Ref SecurityGroupParameter

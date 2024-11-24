@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  KeyName:
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    Description: 'Name of an existing EC2 KeyPair to enable SSH access to instances'
+
+Resources:
+  MyAutoScalingGroup:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    Properties:
+      AvailabilityZones:
+        - !Ref 'AWS::Region'
+      LaunchConfigurationName: !Ref MyLaunchConfig
+      MinSize: '2'
+      MaxSize: '3'
+      DesiredCapacity: '2'
+  
+  MyLaunchConfig:
+    Type: 'AWS::AutoScaling::LaunchConfiguration'
+    Properties:
+      ImageId: 'ami-08fe36427228eddc4'  # Specify your AMI ID
+      InstanceType: 't2.micro'
+      KeyName: !Ref KeyName
+      SecurityGroups:
+        - sg-xxxxxxxxxxxxxxxxx  # Specify your security group(s)
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          # Additional user data or startup scripts if needed
+
