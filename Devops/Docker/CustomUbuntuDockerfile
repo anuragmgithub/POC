@@ -1,0 +1,28 @@
+# Use the Ubuntu base image
+# Build the Docker Image
+# docker build -f CustomUbuntuDockerfile -t ubuntu-web-server .
+# Run the Docker Container
+# docker run -d -p 8000:8000 ubuntu-web-server
+
+FROM ubuntu:latest
+
+# Set environment variables to prevent prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install necessary packages (Python and any other tools you may need)
+RUN apt-get update && \
+    apt-get install -y python3 && \
+    apt-get clean
+
+# Copy the HTML file into the container
+COPY ubuntu-web-server/index.html /usr/src/app/index.html
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Expose port 8000 for the web server
+EXPOSE 8000
+
+# Set the command to run the HTTP server
+
+CMD ["python3", "-m", "http.server", "8000"]

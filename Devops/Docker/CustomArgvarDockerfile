@@ -1,0 +1,15 @@
+# Base image
+FROM ubuntu:20.04
+
+# Define a build-time argument for version
+ARG CURL_VERSION=7.68.0
+
+# Install curl with the specified version
+RUN apt-get update && apt-get install -y curl=$CURL_VERSION*
+
+# Set a default command
+CMD ["curl", "--version"]
+
+# docker build command 
+# docker build -f /home/anurag/devops/Devops/Docker/CustomArgvarDockerfile  -t curl-image --build-arg  CURL_VERSION=7.68.0 .
+# In this case, CURL_VERSION is passed at build time. If not provided, it defaults to 7.68.0 
