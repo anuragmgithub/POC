@@ -1,0 +1,19 @@
+from eralchemy import render_er
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
+
+# Load the .env file
+load_dotenv()
+
+MYSQL_USER = os.getenv("MYSQL_USER")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+MYSQL_HOST = os.getenv("MYSQL_HOST")
+MYSQL_DB = os.getenv("MYSQL_DB")
+
+# Build the connection string
+connection_string = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}"
+
+# Generate the ER Diagram directly from the database
+render_er(connection_string, '/home/anurag/vscode/workspace/dbt-work/dwh/fin/diagram/er_diagram.png')
+print("ER Diagram saved as er_diagram.png")

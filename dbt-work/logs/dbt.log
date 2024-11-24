@@ -1,0 +1,43 @@
+[0m12:24:57.709796 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5efcb7d60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5edf079d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5edf04e80>]}
+
+
+============================== 12:24:57.715880 | 8de44a67-1c74-4f6a-bce4-8728b611257e ==============================
+[0m12:24:57.715880 [info ] [MainThread]: Running with dbt=1.7.18
+[0m12:24:57.718722 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/anurag/.dbt', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt init ecommerce_analytics', 'send_anonymous_usage_stats': 'True'}
+[0m12:24:57.720682 [debug] [MainThread]: Starter project path: /home/anurag/.local/lib/python3.10/site-packages/dbt/include/starter_project
+[0m12:24:57.726451 [info ] [MainThread]: 
+Your new dbt project "ecommerce_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:24:57.727448 [info ] [MainThread]: Setting up your profile.
+[0m12:25:00.712057 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 3.075712, "process_user_time": 3.303193, "process_kernel_time": 0.070067, "process_mem_max_rss": "94952", "process_out_blocks": "72", "process_in_blocks": "0"}
+[0m12:25:00.713309 [debug] [MainThread]: Command `dbt init` succeeded at 12:25:00.713022 after 3.08 seconds
+[0m12:25:00.714073 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5efcb7d60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5edf05570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5edf06470>]}
+[0m12:25:00.714823 [debug] [MainThread]: Flushing usage events
+[0m13:19:09.024882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2fa3883d30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2fa1b402e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2fa1b40790>]}
+
+
+============================== 13:19:09.029436 | 1a4f5ee4-c67a-462f-9714-9589e5674449 ==============================
+[0m13:19:09.029436 [info ] [MainThread]: Running with dbt=1.7.18
+[0m13:19:09.030977 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'profiles_dir': '/home/anurag/.dbt', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m13:19:09.032008 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/anurag/vscode/workspace/dbt-work/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:19:09.033616 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 0.08275677, "process_user_time": 3.253123, "process_kernel_time": 0.090086, "process_mem_max_rss": "91528", "process_out_blocks": "16", "command_success": false, "process_in_blocks": "0"}
+[0m13:19:09.034827 [debug] [MainThread]: Command `dbt run` failed at 13:19:09.034573 after 0.08 seconds
+[0m13:19:09.035493 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2fa3883d30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2fa1b402e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2fa1b431c0>]}
+[0m13:19:09.036194 [debug] [MainThread]: Flushing usage events

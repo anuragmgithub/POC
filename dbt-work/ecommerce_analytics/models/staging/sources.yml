@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: ecommerce_source
+    schema: mypoc  # MySQL schema/database name
+    tables:
+      - name: orders
+      - name: customers

@@ -1,0 +1,12 @@
+# Ignore .env file containing sensitive information
+.env
+
+# Ignore Python compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore any other temporary files or directories
+__pycache__/
+*.db
+*.log
