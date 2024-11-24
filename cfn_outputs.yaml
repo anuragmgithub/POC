@@ -1,0 +1,35 @@
+Parameters:
+  InstanceTypeParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /test/InstanceType
+    Description: SSM Parameter Path for the EC2 instance type.
+
+  KeyNameParameter:
+    Type: 'AWS::SSM::Parameter::Value<String>'
+    Default: /test/Ec2KeyPairName
+    Description: SSM Parameter Path for the EC2 KeyPair name.
+
+  SecurityGroupParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /test/Ec2SecurityGroupId
+    Description: SSM Parameter Path for the EC2 Security Group ID.
+
+Resources:
+  MyEc2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceTypeParameter
+      KeyName: !Ref KeyNameParameter
+      SecurityGroupIds:
+        - !Ref SecurityGroupParameter
+      ImageId: ami-08fe36427228eddc4
+    Metadata:
+      AWS::CloudFormation::Export:
+        Name: MyEC2InstanceID
+
+Outputs:
+  MyEC2InstanceID:
+    Description: The ID of the EC2 instance
+    Value: !Ref MyEc2Instance
+    Export:
+      Name: MyEC2InstanceID

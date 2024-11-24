@@ -1,0 +1,25 @@
+Resources:
+  MyEc2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-08fe36427228eddc4
+      KeyName: myec2instance
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          echo "hello, Ec2 instance"
+
+  MyEBSVolume:
+    Type: 'AWS::EC2::Volume'
+    Properties:
+      Size: 2  # Specify the size of the volume in GiB
+      AvailabilityZone: !GetAtt 'MyEc2Instance.AvailabilityZone'
+
+  MyVolumeAttachment:
+    Type: 'AWS::EC2::VolumeAttachment'
+    Properties:
+      InstanceId: !Ref MyEc2Instance
+      VolumeId: !Ref MyEBSVolume
+      Device: /dev/sdf  # Specify the device to attach
+

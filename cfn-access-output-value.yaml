@@ -1,0 +1,8 @@
+Resources:
+  MyLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: MyLambdaFunction
+      Environment:
+        Variables:
+          EC2InstanceID: !ImportValue MyEC2InstanceID
