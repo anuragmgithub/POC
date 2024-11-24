@@ -1,0 +1,31 @@
+[0m17:47:58.834483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8342e99390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f83436dbac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f83436dad70>]}
+
+
+============================== 17:47:58.841193 | 6b585a87-5939-484e-b2bb-244c84a01f6f ==============================
+[0m17:47:58.841193 [info ] [MainThread]: Running with dbt=1.7.18
+[0m17:47:58.842411 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/anurag/.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt init dbt_poc', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m17:47:58.843418 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': PosixPath('/home/anurag/.dbt')}
+[0m17:47:58.844230 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m17:47:58.846267 [debug] [MainThread]: Starter project path: /home/anurag/.local/lib/python3.10/site-packages/dbt/include/starter_project
+[0m17:47:58.856843 [info ] [MainThread]: 
+Your new dbt project "dbt_poc" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:47:58.858108 [info ] [MainThread]: Setting up your profile.
+[0m17:48:08.904084 [info ] [MainThread]: Profile dbt_poc written to /home/anurag/.dbt/profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m17:48:08.915855 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 10.1792145, "process_user_time": 4.576104, "process_kernel_time": 0.209364, "process_mem_max_rss": "95120", "process_in_blocks": "40", "process_out_blocks": "72"}
+[0m17:48:08.918334 [debug] [MainThread]: Command `dbt init` succeeded at 17:48:08.917696 after 10.18 seconds
+[0m17:48:08.920489 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8342e99390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f83436d8e80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f83436dbac0>]}
+[0m17:48:08.922063 [debug] [MainThread]: Flushing usage events
