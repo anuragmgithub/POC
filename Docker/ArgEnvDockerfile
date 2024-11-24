@@ -1,0 +1,18 @@
+# ARG for build-time configuration
+ARG NODE_VERSION=14
+
+# Use ARG to set up the image
+FROM node:${NODE_VERSION}
+
+# ENV for runtime configuration
+ENV NODE_VERSION=${NODE_VERSION}
+
+# Build command
+RUN echo "Building image with Node.js version ${NODE_VERSION}"
+
+# Expose the runtime version
+CMD echo "Running container with Node.js version ${NODE_VERSION}"
+
+
+# ARG is used to dynamically build the image with a specific Node.js version, 
+# while ENV ensures that this information is available during runtime if needed.
