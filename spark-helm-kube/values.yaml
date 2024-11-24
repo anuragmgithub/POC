@@ -1,0 +1,16 @@
+# spark-helm-kube/values.yaml
+
+image:
+  repository: your_dockerhub_username/spark-workout
+  tag: latest
+  pullPolicy: IfNotPresent
+
+sparkConf:
+  spark.driver.memory: "1g"
+  spark.executor.memory: "2g"
+  spark.executor.cores: 1
+  spark.executor.instances: 2
+
+job:
+  mainApplicationFile: "local:///opt/spark-apps/wordcount.py"
+  arguments: ["/opt/spark-apps/file.txt"]

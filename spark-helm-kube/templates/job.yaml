@@ -1,0 +1,29 @@
+# spark-helm-kube/templates/job.yaml
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "spark-helm-kube.fullname" . }}
+spec:
+  template:
+    spec:
+      containers:
+        - name: spark-job
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - "/opt/bitnami/scripts/spark/run.sh"
+            - "--class"
+            - "{{ .Values.job.mainApplicationFile }}"
+            {{- range .Values.job.arguments }}
+            - "{{ . }}"
+            {{- end }}
+          env:
+            - name: SPARK_DRIVER_MEMORY
+              value: "{{ .Values.sparkConf.spark.driver.memory }}"
+            - name: SPARK_EXECUTOR_MEMORY
+              value: "{{ .Values.sparkConf.spark.executor.memory }}"
+            - name: SPARK_EXECUTOR_CORES
+              value: "{{ .Values.sparkConf.spark.executor.cores }}"
+      restartPolicy: Never
+  backoffLimit: 4
