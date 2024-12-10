@@ -8,3 +8,16 @@ bin/kafka-topics.sh --create --topic my-topic --bootstrap-server localhost:9092 
 bin/kafka-topics.sh --list --bootstrap-server localhost:9092   
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my-topic   
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic --from-beginning   
+
+## Debezium setup 
+
+binlog_format = row
+
+
+CREATE USER 'debezium'@'%' IDENTIFIED BY 'dbz';
+GRANT ALL PRIVILEGES ON *.* TO 'debezium'@'%';
+GRANT REPLICATION SLAVE ON *.* TO 'debezium'@'%';
+FLUSH PRIVILEGES;
+
+sudo service mysql restart
+
