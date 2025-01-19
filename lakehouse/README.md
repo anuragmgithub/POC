@@ -158,3 +158,20 @@ This README compares three major data lake solutions: **Apache Iceberg**, **Delt
 
 Choose the system that aligns with your processing requirements, query patterns, and ecosystem preferences.
 
+### Iceberg Time Travel:  
+Key Points:  
+•	Time Travel works only with non-expired snapshots.  
+•	Expire_snapshots removes data associated with older snapshots, making them unavailable for historical queries.  
+•	If a snapshot is expired, it cannot be restored for queries or historical data analysis.  
+If you need to preserve specific snapshots for long-term analytics or compliance purposes,  
+ ensure they are not expired or backed up externally before using the expire_snapshots procedure.  
+Once a snapshot is expired using the expire_snapshots procedure in Apache Iceberg, 
+it becomes impossible to time travel to that snapshot. This means:  
+- You cannot query historical data associated with the expired snapshot.  
+- Any data, deletes, updates, or inserts made in that snapshot are removed from the system.  
+- Only non-expired snapshots remain available for time-travel queries and historical analytics.  
+
+
+
+
+
