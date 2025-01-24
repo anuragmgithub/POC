@@ -1,0 +1,8 @@
+version: 2
+sources:
+  - name: dbt_mysql_source
+    schema: dbt_mysql  # MySQL schema/database name
+    tables:
+      - name: accounts
+      - name: customers
+      - name: transactions

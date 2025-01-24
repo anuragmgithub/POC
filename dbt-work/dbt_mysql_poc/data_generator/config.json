@@ -1,0 +1,20 @@
+{
+    "tables": [
+        {
+            "name": "table1",
+            "columns": [
+                {"name": "id", "type": "int", "primary_key": true},
+                {"name": "name", "type": "VARCHAR(255)"},
+                {"name": "created_at", "type": "DATETIME"}
+            ]
+        },
+        {
+            "name": "table2",
+            "columns": [
+                {"name": "id", "type": "int", "primary_key": true},
+                {"name": "email", "type": "VARCHAR(255)"},
+                {"name": "updated_at", "type": "DATETIME"}
+            ]
+        }
+    ]
+}
