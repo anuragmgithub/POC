@@ -17,11 +17,11 @@ def run():
     # Register the table as Temporary view 
     table_env.create_temporary_view("persons", persons_table)
 
-    # sample qeury 
+    # sample query 
     result_table = table_env.sql_query("SELECT * FROM persons WHERE age > 30")
 
     ## Convert the result to a Pandas DataFrame (for local testing)
-    result_pdf = table_env.to_pandas(result_table)
+    result_pdf = result_table.to_pandas()
 
     print(result_pdf)
 
