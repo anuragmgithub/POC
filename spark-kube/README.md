@@ -174,3 +174,121 @@ Running Spark Streaming jobs on EKS with Spot Instances can achieve high availab
 
 For more details, refer to the [AWS Spot Instance Advisor](https://aws.amazon.com/ec2/spot/instance-advisor/) and the [Apache Spark on Kubernetes documentation](https://spark.apache.org/docs/latest/running-on-kubernetes.html).
 
+---
+
+🔹 Kubernetes Volumes & VolumeMounts Explained:  
+A volume is a Kubernetes object that provides storage inside a pod. It can be backed by:  
+
+- emptyDir → Temporary storage for a pod  
+- hostPath → Uses host machine’s filesystem   
+- PersistentVolumeClaim (PVC) → Connects to persistent storage like AWS EBS, Azure Disk, etc.  
+- ConfigMap/Secret → Stores configuration data  
+
+Example of defining a volume:  
+```
+volumes:
+  -name: my-volume
+  emptyDir: {} # This creates empty directory inside pod 
+
+```
+
+🔹 What is a VolumeMount?  
+A volumeMount specifies where in the container the volume should be mounted (attached).  
+
+```
+volumneMounts:
+  - name: my-volume
+  mountPath: /app/data # the volumne is available inside /app/data inside the container 
+
+```
+
+- Mounting an emptyDir Volume:  
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: busybox
+      command: [ "sh", "-c", "echo 'Hello World' > /app/data/hello.txt && sleep 3600" ]
+      volumeMounts:
+        - name: my-volume
+          mountPath: /app/data
+  volumes:
+    - name: my-volume
+      emptyDir: {}
+
+```
+
+-  Mounting a PersistentVolumeClaim (PVC):  
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-persistent-pod
+spec:
+  volumes:
+    - name: my-pvc-volume
+      persistentVolumeClaim:
+        claimName: my-pvc  # Uses an existing PVC
+  containers:
+    - name: my-container
+      image: busybox
+      volumeMounts:
+        - name: my-pvc-volume
+          mountPath: /app/storage  # Mounts PVC to this directory
+```
+
+### Difference Between emptyDir and PersistentVolumeClaim (PVC) in Volumes:  
+
+Volume Type	                   Purpose
+emptyDir	                     Creates temporary storage inside the pod. Data is lost when the pod is deleted or restarted.  
+PersistentVolumeClaim (PVC)	   Uses persistent storage (EBS, Azure Disk, NFS, etc.). Data persists even if the pod restarts or is deleted.  
+
+A PersistentVolumeClaim (PVC) is a request for storage from a PersistentVolume (PV), which is managed by Kubernetes.  
+- Define a PVC:  
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce  # Pod can read & write
+  resources:
+    requests:
+      storage: 1Gi   # Request 1Gi of storage
+```
+- Use PVC in a Pod:  
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  volumes:
+    - name: my-pvc-volume
+      persistentVolumeClaim:
+        claimName: my-pvc  # Use the PVC created earlier
+  containers:
+    - name: my-container
+      image: busybox
+      command: [ "sh", "-c", "echo 'Hello PVC' > /app/data/hello.txt && sleep 3600" ]
+      volumeMounts:
+        - name: my-pvc-volume
+          mountPath: /app/data  # Mount the PVC at this path
+```
+
+- The PVC requests storage from Kubernetes.
+- The Pod mounts the PVC at /app/data.
+- Any data written to /app/data persists even if the pod is deleted.
+- A new pod using the same PVC will see the same data.  
+📌 Use Case: Storing logs, databases, or any persistent files.
+
+
+
+
+
+
