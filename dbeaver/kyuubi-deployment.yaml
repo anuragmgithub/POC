@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: kyuubi
-          image: apache/kyuubi:latest
+          image: apache/kyuubi:1.9.3-spark
           ports:
             - containerPort: 10009
           env:
