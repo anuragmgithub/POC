@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbeaver
+  namespace: dbeaver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dbeaver
+  template:
+    metadata:
+      labels:
+        app: dbeaver
+    spec:
+      containers:
+        - name: dbeaver
+          image: dbeaver/cloudbeaver:latest
+          ports:
+            - containerPort: 8978
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: "/opt/dbeaver/workspace"
+              name: dbeaver-storage
+      volumes:
+        - name: dbeaver-storage
+          persistentVolumeClaim:
+            claimName: dbeaver-pvc

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyuubi
+  namespace: kyuubi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kyuubi
+  template:
+    metadata:
+      labels:
+        app: kyuubi
+    spec:
+      containers:
+        - name: kyuubi
+          image: apache/kyuubi:latest
+          ports:
+            - containerPort: 10009
+          env:
+            - name: SPARK_HOME
+              value: "/opt/spark"
+            - name: HADOOP_CONF_DIR
+              value: "/etc/hadoop/conf"
+          resources:
+            requests:
+              cpu: "500m"  # Request 0.5 CPU
+              memory: "512Mi"  # Request 512MB RAM
+            limits:
+              cpu: "1"  # Limit CPU to 1 core
+              memory: "1Gi"  # Limit memory to 1GB
