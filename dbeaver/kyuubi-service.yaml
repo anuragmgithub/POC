@@ -7,8 +7,14 @@ spec:
   selector:
     app: kyuubi
   ports:
-    - protocol: TCP
-      port: 10009
+    - name: jdbc
+      protocol: TCP
+      port: 10009  # JDBC Port
       targetPort: 10009
       nodePort: 30009
+    - name: web-ui
+      protocol: TCP
+      port: 10099  # Web UI Port
+      targetPort: 10099
+      nodePort: 30099
   type: NodePort

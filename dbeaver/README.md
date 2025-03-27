@@ -27,6 +27,15 @@ kyuubi-59585496-f2qcl
 kubectl exec -it kyuubi-59585496-f2qcl -n kyuubi -- cat /opt/kyuubi/conf/kyuubi-defaults.conf
 
 
+kubectl exec -n kyuubi -it kyuubi-59585496-f2qcl -- sh -c "spark-submit --version"
+
+kubectl exec -n kyuubi -it kyuubi-59585496-f2qcl -- cat /etc/kyuubi/conf/kyuubi.conf
+
+kubectl exec -n kyuubi -it  kyuubi-74bbf679b4-7f4tv -- lsof -i :10009
+
+
+
+
 
 
 
