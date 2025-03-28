@@ -28,10 +28,12 @@ spec:
               value: "my-local-spark:3.4.2"
             - name: KYUUBI_SESSION_ENGINE_TIMEOUT
               value: "360000"
+            - name: HADOOP_USER_NAME
+              value: "spark"
           resources:
             requests:
-              cpu: "1"
-              memory: "2Gi"
+              cpu: "500m"
+              memory: "1Gi"
             limits:
               cpu: "1"
-              memory: "4Gi"
+              memory: "2Gi"
