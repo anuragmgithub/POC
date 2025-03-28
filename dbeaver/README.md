@@ -1,3 +1,5 @@
+Apache Kyuubi is a distributed, multi-tenant enterprise data gateway designed on top of Spark, Flink, Trino, and other computing engines. Its purpose is to offer serverless SQL services on top of Lakehouse.  
+
 Create a Namespace:  
 ```kubectl create namespace dbeaver```   
 
@@ -48,6 +50,8 @@ Since Kyuubi needs to manage Spark jobs, it requires permissions to watch and li
 no
 
 kubectl exec -it kyuubi-74bbf679b4-95dw4 -n kyuubi -- /bin/bash
+
+
 
 
 
