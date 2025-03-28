@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: kyuubi
-          image: kyuubi-custom:1.8.3
+          image: my-custom-kyuubi:1.8.3
+          imagePullPolicy: Never
           ports:
             - containerPort: 10009
           env:
@@ -23,10 +24,14 @@ spec:
               value: "/opt/kyuubi/externals/spark-3.4.2-bin-hadoop3"
             - name: HADOOP_CONF_DIR
               value: "/etc/hadoop/conf"
+            - name: SPARK_KUBERNETES_CONTAINER_IMAGE
+              value: "my-local-spark:3.4.2"
+            - name: KYUUBI_SESSION_ENGINE_TIMEOUT
+              value: "360000"
           resources:
             requests:
-              cpu: "500m"  # Request 0.5 CPU
-              memory: "512Mi"  # Request 512MB RAM
+              cpu: "1"
+              memory: "2Gi"
             limits:
-              cpu: "1"  # Limit CPU to 1 core
-              memory: "1Gi"  # Limit memory to 1GB
+              cpu: "1"
+              memory: "4Gi"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kyuubi-config
+  namespace: kyuubi
+data:
+  kyuubi-defaults.conf: |
+    kyuubi.frontend.bind.port=10009
+    kyuubi.engine.share.level=SERVER
+  kyuubi-env.sh: |
+    export KYUUBI_HOME=/opt/kyuubi
+    export KYUUBI_LOG_DIR=/opt/kyuubi/logs/

@@ -33,6 +33,26 @@ kubectl exec -n kyuubi -it kyuubi-59585496-f2qcl -- cat /etc/kyuubi/conf/kyuubi.
 
 kubectl exec -n kyuubi -it  kyuubi-74bbf679b4-7f4tv -- lsof -i :10009
 
+kubectl exec -n dbeaver -it dbeaver-75c5969cf7-5dbd5 -- nc -zv kyuubi-service.kyuubi.svc.cluster.local 10009
+
+kubectl exec -n dbeaver -it dbeaver-75c5969cf7-5dbd5 -- /bin/sh
+
+kubectl exec -n kyuubi -it kyuubi-74bbf679b4-7f4tv -- cat $KYUUBI_CONF_DIR/kyuubi-defaults.conf | grep authentication
+
+The "Invalid status -128" error in Kyuubi logs indicates an authentication mismatch between the client (DBeaver) and the Kyuubi server. This happens when Kyuubi expects SASL authentication, but DBeaver does not support it or is misconfigured.
+
+Since Kyuubi needs to manage Spark jobs, it requires permissions to watch and list pods in Kubernetes. You need to update the RBAC   (Role-Based Access Control) settings.
+
+
+ kubectl auth can-i delete services --as=system:serviceaccount:kyuubi:default -n default
+no
+
+kubectl exec -it kyuubi-74bbf679b4-95dw4 -n kyuubi -- /bin/bash
+
+
+
+
+
 
 
 
