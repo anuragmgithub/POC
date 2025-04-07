@@ -9,3 +9,6 @@
 - You need **millisecond-level latency**
 - You require **event-time semantics** and advanced time handling
 - You want to build **stateful stream processing** applications with low latency
+
+
+![alt text](image.png)
