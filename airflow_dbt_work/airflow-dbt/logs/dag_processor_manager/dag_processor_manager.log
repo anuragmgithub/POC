@@ -84,3 +84,112 @@ File Path                        PID    Runtime      # DAGs    # Errors  Last Ru
 /opt/airflow/dags/sample_dag.py                           1           0  0.20s           2024-09-21T13:16:20                      10
 ================================================================================
 [2024-09-21T13:16:53.961+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2025-03-29T12:29:44.742+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2025-03-29T12:29:44.744+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2025-03-29T12:29:44.746+0000] {manager.py:485} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-03-29T12:29:44.746+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2025-03-29T12:29:44.763+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2025-03-29T12:29:45.161+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run      Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  ----------  ----------------------
+/opt/airflow/dags/sample_dag.py     68  0.16s             0           0                                                   0
+================================================================================
+[2025-03-29T12:30:16.147+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py                           1           0  1.73s           2025-03-29T12:29:46                      43
+================================================================================
+[2025-03-29T12:30:49.838+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py     69  32.60s            1           0  1.73s           2025-03-29T12:29:46                      43
+================================================================================
+[2025-03-29T12:30:53.024+0000] {manager.py:1146} ERROR - Processor for /opt/airflow/dags/sample_dag.py exited with return code 1.
+[2025-03-29T12:31:37.833+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py     70  0.04s             0          -1  35.76s          2025-03-29T12:30:52                       0
+================================================================================
+[2025-03-29T12:32:08.257+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py                           1           0  3.39s           2025-03-29T12:31:41                      10
+================================================================================
+[2025-03-29T12:32:47.136+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py     78  0.09s             1           0  0.45s           2025-03-29T12:32:11                      10
+================================================================================
+[2025-03-29T12:33:21.502+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py     78  32.89s            1           0  0.45s           2025-03-29T12:32:11                      10
+================================================================================
+[2025-03-29T12:34:03.160+0000] {manager.py:1366} ERROR - Processor for /opt/airflow/dags/sample_dag.py with PID 78 started at 2025-03-29T12:32:46.798583+00:00 has timed out, killing it.
+[2025-03-29T12:34:14.470+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py                           0           1  74.16s          2025-03-29T12:34:00                       0
+================================================================================
+[2025-03-29T12:34:45.134+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2025-03-29T12:34:45.152+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2025-03-29T12:34:46.210+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py                           1           0  5.82s           2025-03-29T12:34:37                      10
+================================================================================
+[2025-03-29T12:35:20.987+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py     92  4.71s             1           0  5.82s           2025-03-29T12:34:37                      10
+================================================================================
+[2025-03-29T12:36:09.205+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py     92  45.90s            1           0  5.82s           2025-03-29T12:34:37                      10
+================================================================================
+[2025-03-29T12:40:30.047+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2025-03-29T12:40:30.182+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2025-03-29T12:40:32.588+0000] {manager.py:1366} ERROR - Processor for /opt/airflow/dags/sample_dag.py with PID 92 started at 2025-03-29T12:35:15.869224+00:00 has timed out, killing it.
+[2025-03-29T12:40:32.930+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/sample_dag.py                           0           1  316.72s         2025-03-29T12:40:32                       0
+================================================================================
+[2025-03-29T12:40:40.479+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15

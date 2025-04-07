@@ -20,4 +20,3 @@ kubectl patch pvc <pvc-name> -p '{"metadata":{"finalizers":null}}'
 kubectl delete pvc <pvc-name>
 ```
 
-
