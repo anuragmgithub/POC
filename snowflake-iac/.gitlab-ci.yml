@@ -1,0 +1,9 @@
+stages:
+  - deploy 
+deploy_snowflake: 
+  stage: deploy 
+  image: ghcr.io/snowflakedb/snowsql:latest
+  script: 
+    - ./scripts/deploy.sh
+  only:
+    - main
