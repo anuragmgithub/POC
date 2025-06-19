@@ -1,9 +1,10 @@
+image: python:3.10
+
 stages:
-  - deploy 
-deploy_snowflake: 
-  stage: deploy 
-  image: ghcr.io/snowflakedb/snowsql:latest
-  script: 
-    - ./scripts/deploy.sh
-  only:
-    - main
+  - deploy
+
+deploy_schema:
+  stage: deploy
+  script:
+    - pip install -r requirements.txt
+    - python snowflake-iac/scripts/deploy.py
