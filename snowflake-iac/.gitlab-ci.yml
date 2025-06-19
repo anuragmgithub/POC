@@ -6,5 +6,6 @@ stages:
 deploy_schema:
   stage: deploy
   script:
-    - pip install -r requirements.txt
+    - pip install -r snowflake-iac/requirements.txt
     - python snowflake-iac/scripts/deploy.py
+  when: manual
