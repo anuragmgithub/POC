@@ -11,7 +11,9 @@ conn = snowflake.connector.connect(
     password=os.getenv("SNOWFLAKE_PASSWORD"),
     account=os.getenv("SNOWFLAKE_ACCOUNT"),
     warehouse=os.getenv("SNOWFLAKE_WAREHOUSE"),
-    role=os.getenv("SNOWFLAKE_ROLE"),
+    database=os.getenv("SNOWFLAKE_DATABASE"),
+    schema=os.getenv("SNOWFLAKE_SCHEMA"),
+    role=os.getenv("SNOWFLAKE_ROLE")
 )
 
 # Execute SQL
