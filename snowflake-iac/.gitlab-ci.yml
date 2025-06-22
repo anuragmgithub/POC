@@ -1,12 +1,16 @@
 image: python:3.10
 
+
+stages:
+  - test
+  - deploy
+
 test_connectivity:
+  stage: test
   script:
     - echo "Testing connectivity to Snowflake..."
     - curl -Iv https://ZKZNAHE-UE29963.snowflakecomputing.com
 
-stages:
-  - deploy
 
 deploy_schema:
   stage: deploy
