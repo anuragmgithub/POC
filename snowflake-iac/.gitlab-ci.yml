@@ -1,5 +1,10 @@
 image: python:3.10
 
+test_connectivity:
+  script:
+    - echo "Testing connectivity to Snowflake..."
+    - curl -Iv https://ZKZNAHE-UE29963.snowflakecomputing.com
+
 stages:
   - deploy
 
