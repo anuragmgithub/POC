@@ -9,11 +9,12 @@ test_connectivity:
   stage: test
   script:
     - echo "Testing connectivity to Snowflake..."
-    - curl -Iv https://ZKZNAHE-UE29963.snowflakecomputing.com
+    - curl -Iv https://$SNOWFLAKE_ACCOUNT.snowflakecomputing.com
 
 
 deploy_schema:
   stage: deploy
+  needs: [test_connectivity]
   script:
     - pip install -r snowflake-iac/requirements.txt
     - python snowflake-iac/scripts/deploy.py
