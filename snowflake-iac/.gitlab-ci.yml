@@ -10,11 +10,22 @@ test_connectivity:
     - echo "Testing connectivity to Snowflake..."
     - curl -Iv https://$SNOWFLAKE_ACCOUNT.snowflakecomputing.com
 
-
-deploy_schema:
+deploy_schema_feature:
   stage: sf_objects
   needs: [test_connectivity]
   script:
     - pip install -r snowflake-iac/requirements.txt
     - python snowflake-iac/scripts/deploy.py
+  only:
+    - /^feature\/.*$/
+  when: manual
+
+deploy_schema_prod:
+  stage: sf_objects
+  needs: [deploy_schema_feature]
+  script:
+    - pip install -r snowflake-iac/requirements.txt
+    - python snowflake-iac/scripts/deploy.py --prod
+  only:
+    - main
   when: manual
