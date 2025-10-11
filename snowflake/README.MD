@@ -159,8 +159,9 @@ ORDER BY SCHEDULED_TIME DESC;
 
 
 ![alt text](image.png)
+--- 
 
-# VIA Listing:  
+## VIA Listing:  
 Publish the Share as a Listing  
 ```
 CREATE OR REPLACE LISTING PARTNER_LISTING
