@@ -158,3 +158,46 @@ FROM TABLE(INFORMATION_SCHEMA.TASK_HISTORY(
 ORDER BY SCHEDULED_TIME DESC;
 
 
+![alt text](image.png)
+
+# VIA Listing:  
+Publish the Share as a Listing  
+```
+CREATE OR REPLACE LISTING PARTNER_LISTING
+  SHARE = PARTNER_SHARE
+  DISPLAY_NAME = 'Company Partner Data'
+  DESCRIPTION = 'Curated dataset for partners p1, p2, p3, p4'
+  TAGS = ('partners', 'finance', 'HR');
+  ```
+### Notes:  
+1. You can configure the listing as public or private. For your partners, use private listing.  
+2. You can manage subscriptions per partner.  
+
+#### Add Partner Accounts / Subscribers:  
+In a private listing, you must authorize partner accounts to subscribe:  
+```
+ALTER LISTING PARTNER_LISTING ADD ACCOUNT = '<PARTNER1_ACCOUNT_LOCATOR>';
+ALTER LISTING PARTNER_LISTING ADD ACCOUNT = '<PARTNER2_ACCOUNT_LOCATOR>';
+-- Repeat for P3, P4
+```
+
+#### Partner Subscription:  
+1. Each partner logs into their Snowflake account, discovers your listing, and subscribes.
+2. Once subscribed, the partner can create a database from your listing:  
+```
+CREATE DATABASE PARTNER1_DB FROM SHARE <PRODUCER_ACCOUNT>.PARTNER_SHARE;
+```
+
+### Monitor subscriptions and consumption via:   
+SHOW LISTINGS;  
+SHOW SHARES;  
+
+#### Track query usage by partners:
+```
+SELECT * FROM SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY
+WHERE USER_NAME IN ('PARTNER1_USER', 'PARTNER2_USER');
+
+```
+
+
+
