@@ -128,6 +128,55 @@ Why Checkpointing Exists?
 ![alt text](image-1.png)
 
 
+### Spark vs flink timeline:  
+Time → 
+
+Spark Structured Streaming (Batch Interval = 5 sec)
+|--------- Batch 1 ---------|--------- Batch 2 ---------|
+Events arrive → Buffered → Process batch → Commit outputs
+Processing latency ≈ 5 sec
+Output visible after batch
+Real-time actions → delayed by batch (cannot trigger instantly)
+
+Flink Streaming (Checkpoint Interval = 5 sec)
+Event1 Event2 Event3 Event4 ...
+  |     |     |     |
+Process instantly → trigger real-time actions (alerts, API calls)
+Sink write buffered → committed at checkpoint boundary
+Processing latency = ms
+Output visibility latency ≈ checkpoint interval (5 sec)   
+
+### Apache Flink Real-Time Processing & Exactly-Once Semantics  
+1. Checkpointing and State Management  
+
+Flink maintains distributed state and periodically takes checkpoints for recovery.  
+
+Checkpoints store source offsets, operator state, timers, and watermark positions.  
+
+On failure, Flink restores state from the latest checkpoint, ensuring no data loss.  
+--- 
+
+2. Exactly-Once Semantics  
+
+Exactly-once guarantees that state updates and transactional sinks are committed once, even after failures.  
+
+Checkpoint interval determines when transactional sinks are committed, e.g., every 5 seconds.  
+
+Processing is continuous, but output visibility for sinks happens at checkpoint boundaries.  
+
+External side effects (e.g., alerts, API calls) are not automatically exactly-once; they require idempotency to avoid duplicates.  
+---   
+
+3. At-Least-Once Semantics  
+
+Records are written immediately to sinks, but duplicates may occur on failure/replay.  
+
+Checkpoints are still used for state recovery.  
+
+Latency is lower than exactly-once, but consumers must handle duplicates via idempotent writes or deduplication.  
+
+
+
 
 
 
