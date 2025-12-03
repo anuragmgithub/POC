@@ -95,7 +95,41 @@ Task 2	Map → Filter
 Task 3	KeyBy  
 Task 4	Window Aggregate  
 Task 5	Sink  
-Here, Map and Filter are chained together into a single task, reducing unnecessary overhead.  
+Here, Map and Filter are chained together into a single task, reducing unnecessary overhead. 
+
+### Why does Flink have separate concepts of Distributed State and Checkpointing?  
+What is Distributed State?  
+
+Distributed State is the live, in-memory state that Flink operators maintain while processing streaming data.  
+
+In a Flink job, the state is attached to operators and distributed across TaskManagers.  
+
+Types of Distributed State:  
+Type	                  Description
+Keyed State	              Maintained per key; distributed across partitions
+Operator State	          Local to operator instance (example: Kafka consumer offsets)
+
+Why Distributed State Exists:  
+- Enables stateful stream processing (aggregations, pattern matching, ML features, etc.)  
+- Scales horizontally as state is split across cluster nodes. 
+- Provides high throughput & low latency since it lives in fast local memory or RocksDB  
+
+What is Checkpointing?  
+Checkpointing creates periodic, consistent snapshots of distributed state and stores them in durable storage (e.g., S3, HDFS).  
+
+Why Checkpointing Exists?  
+- Provides fault tolerance for streaming applications
+- Allows job recovery without data or state loss
+- Enables exactly-once processing guarantees  
+
+
+### Flink vs spark checkpointing:  
+
+![alt text](image-1.png)
 
 
 
+
+
+
+  
