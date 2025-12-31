@@ -13,3 +13,30 @@ Components of EMR Cluster:
 | **Core Nodes**            | HDFS DataNode, YARN NodeManager, Spark Executors               | Stores data (HDFS) + runs tasks/executors       |
 | **Task Nodes (Optional)** | YARN NodeManager, Spark Executors                              | Compute-only nodes — no HDFS storage            |
 
+
+
+                Clients / Job Submitters
+                  (CLI, SDK, Airflow, StepFns)
+                         |
+                         v
+          ┌─────────────────────────────────┐
+          │            Master Node          │
+          │---------------------------------│
+          │ Resource Manager (YARN)         │
+          │ NameNode (HDFS metadata)        │
+          │ Spark Driver / HiveServer       │
+          └─────────────────────────────────┘
+       /                   |                     \
+      v                    v                      v
+┌──────────────┐   ┌──────────────┐      ┌──────────────┐
+│  Core Node   │   │  Core Node   │ ...  │  Task Node   │
+│ DataNode     │   │ DataNode     │      │ No HDFS      │
+│ Executors    │   │ Executors    │      │ Executors    │
+└──────────────┘   └──────────────┘      └──────────────┘
+       \               \                      /
+                        \
+                        v
+                   Amazon S3 / EMRFS
+              (Primary storage in modern EMR)
+
+
